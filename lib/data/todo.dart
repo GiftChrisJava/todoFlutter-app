@@ -3,7 +3,7 @@ class Todo {
   final String subtitle;
   bool isDone;
 
-// constructor
+  // constructor
   Todo({
     this.title = "",
     this.subtitle = "",
@@ -20,5 +20,27 @@ class Todo {
       subtitle: subtitle ?? this.subtitle,
       isDone: isDone ?? this.isDone,
     );
+  }
+
+  // initializer
+  factory Todo.fromJson(Map<String, dynamic> json) {
+    return Todo(
+        title: json['title'],
+        subtitle: json['subtitle'],
+        isDone: json['isDone']);
+  }
+
+  // to json method to return a json
+  Map<String, dynamic> toJson() {
+    return {'title': title, 'subtitle': subtitle, 'isDone': isDone};
+  }
+
+  @override
+  String toString() {
+    return ''' Todo : {
+      title : $title\n
+      subtitle : $subtitle\n
+      isDone : $isDone\n
+    }''';
   }
 }
